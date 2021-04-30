@@ -20,7 +20,9 @@ $module = array("Engine"=>"garblizer-angryranter.php","Likelihood"=>0.1);
 array_push($garblizermodules,$module);
 $module = array("Engine"=>"garblizer-mistyper.php","Likelihood"=>0.1);
 array_push($garblizermodules,$module);
-$module = array("Engine"=>"garblizer-capitalisemeh.php","Likelihood"=>1);
+$module = array("Engine"=>"garblizer-capitalisemeh.php","Likelihood"=>0.4);
+array_push($garblizermodules,$module);
+$module = array("Engine"=>"garblizer-spacingmeh.php","Likelihood"=>0.2);
 array_push($garblizermodules,$module);
 
 
