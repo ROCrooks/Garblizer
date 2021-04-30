@@ -1,4 +1,16 @@
 <?php
+//This is universal for any root directory in pages whether online, live or development
+//This is also universal for in engine or in page
+$currentdirectory = getcwd();
+$removedirs = array("/pages","/engines","/admin","/srrs");
+$currentdirectory = str_replace($removedirs,"",$currentdirectory);
+$enginesdirectory = $currentdirectory . "/engines/";
+
+//Include required files
+include $enginesdirectory . 'garblizer-required-files.php';
+
+//Angry ranter inserts random angry words and phrases into the text
+
 //The angry words to randomly include
 $rantwords = array(
 "we won!",
@@ -20,15 +32,6 @@ $rantwords = array(
 "cultural maxism"
 );
 
-include_once '../functions/maths-functions.php';
-//Angry ranter randomly inserts random angry words into the piece of text
-
-//Get the precision of the likelihood seed generated if it isn't already
-include 'likelihood-precision.php';
-
-//Get the test data generated if it isn't already
-include 'default-testing-data.php';
-
 //Break text up into array
 $textarray = explode(" ",$text);
 
@@ -39,7 +42,7 @@ foreach ($textarray as $textarraykey=>$word)
   $diceroll = randomdigit(true,$likelihoodprecision);
 
   //Compare the dice roll to the likelihood
-  if ($diceroll <= $likelihood)
+  if ($diceroll <= $module['Likelihood'])
     {
     //Get the ranty word to add
     $toprantkey = count($rantwords)-1;
@@ -54,8 +57,5 @@ foreach ($textarray as $textarraykey=>$word)
   }
 
 //Implode array to create output
-$outputtext = implode(" ",$textarray);
-
-//Get the test data generated if it isn't already
-include 'display-testing-output.php';
+$text = implode(" ",$textarray);
 ?>

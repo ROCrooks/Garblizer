@@ -1,4 +1,16 @@
 <?php
+//This is universal for any root directory in pages whether online, live or development
+//This is also universal for in engine or in page
+$currentdirectory = getcwd();
+$removedirs = array("/pages","/engines","/admin","/srrs");
+$currentdirectory = str_replace($removedirs,"",$currentdirectory);
+$enginesdirectory = $currentdirectory . "/engines/";
+
+//Include required files
+include $enginesdirectory . 'garblizer-required-files.php';
+
+//Mistyper randomly includes typos in the inserted text
+
 //The angry words to randomly include
 $missletters = array(
 "a"=>"aqwsxz",
@@ -29,15 +41,6 @@ $missletters = array(
 "z"=>"zas\x"
 );
 
-include_once '../functions/maths-functions.php';
-//Angry ranter randomly inserts random angry words into the piece of text
-
-//Get the precision of the likelihood seed generated if it isn't already
-include 'likelihood-precision.php';
-
-//Get the test data generated if it isn't already
-include 'default-testing-data.php';
-
 //Break text up into array of letters
 $textarray = str_split($text);
 
@@ -48,7 +51,7 @@ foreach ($textarray as $textarraykey=>$letter)
   $diceroll = randomdigit(true,$likelihoodprecision);
 
   //Compare the dice roll to the likelihood
-  if ($diceroll <= $likelihood)
+  if ($diceroll <= $module['Likelihood'])
     {
     //Lookup mistype key
     $lookupletter = strtolower($letter);
@@ -69,6 +72,7 @@ foreach ($textarray as $textarraykey=>$letter)
       $misskey = rand(0,$topmisskey);
       $miss = $misses[$misskey];
 
+      //Replace the letter with the misstype
       $letter = $miss;
       }
 
@@ -80,8 +84,5 @@ foreach ($textarray as $textarraykey=>$letter)
   }
 
 //Implode array to create output
-$outputtext = implode("",$textarray);
-
-//Get the test data generated if it isn't already
-include 'display-testing-output.php';
+$text = implode("",$textarray);
 ?>
