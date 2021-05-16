@@ -88,7 +88,7 @@ foreach($allmodules as $module)
 //Make the HTML form
 $garblizermodulesformhtml = $garblizermodulesformhtml . '</div>';
 $garblizermodulesformhtml = $garblizermodulesformhtml . '<p><input type="submit" name="Submit" value="Submit"> <input type="Reset" name="Reset" value="Reset">';
-$garblizermodulesformhtml = '<div class="item"><p class="blockheading">Use Garblizer</p><p>Insert your text and choose which Garblizer modules to include, and how much they apply to the text. 0.2 is a recommended setting for all of them, too high and the text becomes too incoherent, too low many not be as funny.</p><form method="post" action="?page=Garblizer">' . $garblizermodulesformhtml . '</form></div>';
+$garblizermodulesformhtml = '<div class="item"><p class="blockheading">Use Garblizer</p><p>Insert your text and choose which Garblizer modules to include, and how much they apply to the text. 0.2 is a recommended setting for all of them, too high and the text becomes too incoherent, too low may not be as funny. Just experiment, this isn't an exact science!</p><form method="post" action="?page=Garblizer">' . $garblizermodulesformhtml . '</form></div>';
 ?>
 <?php
 echo $outputhtml;
@@ -99,6 +99,7 @@ echo $outputhtml;
   that so many angry people on social media write in preference to clear written
   communication. A number of modules are available to turn the input text into
   corrupted angry ranty lunacy.</p>
+<p>Garblizer even has a <a href="https://github.com/ROCrooks/Garblizer">Git Repository</a>.</p>
 </div>
 <?php
 echo $garblizermodulesformhtml;
